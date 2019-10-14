@@ -63,7 +63,7 @@ func NewPerfCollector() (Collector, error) {
 	ncpus := 0
 	var err error
 
-	if *cpus == "" || cpus == nil || !strings.Contains(*cpus, "-") || strings.Count(*cpus, "-") != 1 {
+	if cpus == nil || *cpus == "" || !strings.Contains(*cpus, "-") || strings.Count(*cpus, "-") != 1 {
 		start = 0
 		ncpus = runtime.NumCPU() - 1
 	} else {
@@ -83,7 +83,7 @@ func NewPerfCollector() (Collector, error) {
 		// Use -1 to profile all processes on the CPU, see:
 		// man perf_event_open
 		p := perf.NewHardwareProfiler(-1, i)
-		collector.perfHwProfilers[idx] = p //perf.NewHardwareProfiler(-1, i)
+		collector.perfHwProfilers[idx] = p
 		if err := collector.perfHwProfilers[idx].Start(); err != nil {
 			return collector, err
 		} else {
