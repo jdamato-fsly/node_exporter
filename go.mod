@@ -1,4 +1,4 @@
-module github.com/prometheus/node_exporter
+module github.com/jdamato-fsly/node_exporter
 
 require (
 	github.com/beevik/ntp v0.2.0
